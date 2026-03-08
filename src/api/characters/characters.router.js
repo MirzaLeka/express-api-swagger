@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const charactersRepository = require('../../repository/characters.repository')
+const charactersRepository = require('../../repository/characters.repository');
+const authMiddleware = require('../../middleware/auth.middleware');
 
 // Swagger docs for this router
 require('./characters.swagger');
@@ -22,7 +23,6 @@ router.get('/:id', async (req, res) => {
   if (!charId || charId < 1) {
     return res.status(400).send({ status: 400, message: 'Invalid id provided!' });
   }
-
 
   const character = await charactersRepository.getCharacterById(charId);
 
@@ -58,11 +58,7 @@ router.get('/:id/slow', async (req, res) => {
 /**
  * POST /api/characters/new
 */
-router.post('/new', async (req, res) => {
-  const accessToken = req.header('x-auth-token');
-  if (!accessToken) {
-    return res.status(401).send({ status: 401, message: 'Log in to continue!' });
-  }
+router.post('/new', authMiddleware, async (req, res) => {
 
   if (!req.body) {
     return res.status(400).send({ status: 400, message: 'Invalid create request!' });
@@ -75,7 +71,7 @@ router.post('/new', async (req, res) => {
 /**
  * PUT /api/characters/update/:id
 */
-router.put('/update/:id', async (req, res) => {
+router.put('/update/:id', authMiddleware, async (req, res) => {
   const charId = parseInt(req.params.id, 10);
 
   if (!charId || charId < 1) {
@@ -98,7 +94,7 @@ router.put('/update/:id', async (req, res) => {
 /**
  * DELETE /api/characters/delete/:id
 */
-router.delete('/delete/:id', async (req, res) => {
+router.delete('/delete/:id', authMiddleware, async (req, res) => {
   const charId = parseInt(req.params.id, 10);
 
   if (!charId || charId < 1) {
@@ -128,7 +124,7 @@ router.get('/test/not-allowed', (req, res) => {
 /**
  * PUT /api/characters/update/:id/broken
 */
-router.put('/update/:id/broken', async (req, res) => {
+router.put('/update/:id/broken', authMiddleware, async (req, res) => {
 
   // random response
   const oneOrZero = (Math.random() >= 0.5) ? 1 : 0;

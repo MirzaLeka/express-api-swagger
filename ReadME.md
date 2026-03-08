@@ -22,7 +22,7 @@ Install dependencies:
 npm install
 ```
 
-Start the server using PM2:
+Start the server:
 
 ```bash
 npm start
@@ -106,6 +106,9 @@ src/
     swagger.config.js
   db/
     data.json
+  middleware/
+  logs/
+  repository/
   app.js
 ```
 

@@ -29,12 +29,6 @@
       "name": "Pikachu",
       "profession": "Pet",
       "race": "Pokemon"
-    },
-    {
-      "id": 6,
-      "name": "a",
-      "profession": "string",
-      "race": "string"
     }
   ]
 }
