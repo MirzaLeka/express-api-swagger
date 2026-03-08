@@ -1,0 +1,40 @@
+{
+  "characters": [
+    {
+      "id": 1,
+      "name": "Son Goku",
+      "profession": "Martial Arts Instructor",
+      "race": "Saiyan"
+    },
+    {
+      "id": 2,
+      "name": "Homer Simpson",
+      "profession": "Safety Inspector",
+      "race": "Human"
+    },
+    {
+      "id": 3,
+      "name": "Leonardo",
+      "profession": "Ninja",
+      "race": "Turtle"
+    },
+    {
+      "id": 4,
+      "name": "Ippo Makunouchi",
+      "profession": "Boxer",
+      "race": "Human"
+    },
+    {
+      "id": 5,
+      "name": "Pikachu",
+      "profession": "Pet",
+      "race": "Pokemon"
+    },
+    {
+      "id": 6,
+      "name": "a",
+      "profession": "string",
+      "race": "string"
+    }
+  ]
+}
